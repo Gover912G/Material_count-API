@@ -3,17 +3,20 @@ from django.db import models
 # Create your models here.
 
 class Router(models.Model):
-    name = models.CharField(Max_lenght=100)
-    quantity = models.IntergerField()
-    purchased_date = models.DateTimeField(auto_add_now = True)
+    name = models.CharField(max_length=100)
+    quantity = models.IntegerField()
+    purchased_date = models.DateTimeField(auto_now_add=True)
+    used_date = models.DateTimeField(auto_now=True)
+    return_date = models.DateTimeField(auto_now=True)
 
     def use(self, quantity):
         self.quantity -= quantity
+        self.used_date = models.DateTimeField(auto_now=True)
         self.save()
-    
 
     def return_item(self, quantity):
         self.quantity += quantity
+        self.return_date = models.DateTimeField(auto_now=True)
         self.save()
 
     def __str__(self):
@@ -27,10 +30,12 @@ class ONU(models.Model):
 
     def use(self, quantity):
         self.quantity -= quantity
+        self.used_date = models.DateTimeField(auto_now=True)
         self.save()
 
     def return_item(self, quantity):
         self.quantity += quantity
+        self.return_date = models.DateTimeField(auto_now=True)
         self.save()
 
     def __str__(self):
@@ -43,10 +48,12 @@ class DropCable(models.Model):
 
     def use(self, length):
         self.total_length -= length
+        self.used_date = models.DateTimeField(auto_now=True)
         self.save()
 
     def return_item(self, length):
         self.total_length += length
+        self.return_date = models.DateTimeField(auto_now=True)
         self.save()
 
     def __str__(self):
