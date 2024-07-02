@@ -66,7 +66,7 @@ class DropCableUsageRecord(models.Model):
     used_by = models.CharField(max_length=100)
     used_date = models.DateTimeField(auto_now_add=True)
 
-    @property
+    @property #to use method as an attribute
     def length_used(self):
         return self.length_before_use - self.length_after_use
 
