@@ -7,7 +7,7 @@ class RouterSerializer(serializers.ModelSerializer):
         model = Router
         fields = '__all__'
 
-class ONUSerializer(serializers.ModekSerializer):
+class ONUSerializer(serializers.ModelSerializer):
     class Meta:
         model = ONU
         fields = '__all __'

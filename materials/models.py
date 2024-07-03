@@ -24,9 +24,9 @@ class Router(models.Model):
 
 
 class ONU(models.Model):
-    name = models.CharField(Max_length= 100)
-    quantity = models.IntergerField()
-    purchased_date = models.DateTimeField(auto_add_now = True)
+    name = models.CharField(max_length= 100)
+    quantity = models.IntegerField()
+    purchased_date = models.DateTimeField(auto_now_add = True)
 
     def use(self, quantity):
         self.quantity -= quantity

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from rest_framework import generics
-from rest_framework.response import response
+from rest_framework.response import Response
 from rest_framework import status
 from .models import Router, ONU, DropCable, DropCableUsageRecord
 from .serializers import RouterSerializer, ONUSerializer, DropCableSerializer, DropCableUsageRecordSerializer
@@ -11,7 +11,7 @@ class RouterListCreateView(generics.ListCreateAPIView):
     queryset = Router.objects.all()
     serializer_class = RouterSerializer
 
-class RouterDetailView(generics.RetriewUpdateDestroyAPIView):
+class RouterDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Router.objects.all()
     serializer_class = RouterSerializer
 
@@ -19,7 +19,7 @@ class ONUListCreateView(generics.ListCreateAPIView):
     queryset = ONU.objects.all()
     serializer_class = ONUSerializer
 
-class ONUSerializerDetailView(generics.RetriewUpdateDestroyAPIView):
+class ONUSerializerDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ONU.objects.all()
     serializer_class = ONUSerializer
 
@@ -28,7 +28,7 @@ class DropCableListCreateView(generics.ListCreateAPIView):
     queryset = DropCable.objects.all()
     serializer_class = DropCableSerializer
 
-class DropCableDetailView(generics.RetriewUpdateDestroyAPIView):
+class DropCableDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = DropCable.objects.all()
     serializer_class = DropCableSerializer
 
@@ -56,5 +56,5 @@ class DropCableUsageRecordListCreateView(generics.ListCreateAPIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     class DropCableUsageRecordDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = DropCableUsageRecord.objects.all()
-    serializer_class = DropCableUsageRecordSerializer
+        queryset = DropCableUsageRecord.objects.all()
+        serializer_class = DropCableUsageRecordSerializer
